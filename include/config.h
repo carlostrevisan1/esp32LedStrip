@@ -16,6 +16,7 @@ unsigned long lastMillis = millis();
 
 int rainbowMode = 0;
 int rainbowSpeed = 0;
+int effectMode = 2;
 
 WiFiClient espClient;
 EasyOTA OTA;

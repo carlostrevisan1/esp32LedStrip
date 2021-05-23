@@ -8,7 +8,7 @@ const char* ssid       = "<YOUR SSID>";
 const char* password   = "<YOUR PASSWORD>";
 
 int reconTries = 0;
-const char* mqttServer = "<IPADRESS>";
+const char* mqttServer = "<MQTTIPADRESS>";
 const int mqttPort = 0;//YOUR PORT;
 const char* mqttUser = "MQTT USER";
 const char* mqttPassword = "MQTT PASS";

@@ -43,7 +43,7 @@ void loop()
       esp_restart();
     }
   }
-  isRainbow();
+  handleEffect();
   keepOnline();
   OTA.handle();
   client.loop();

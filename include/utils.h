@@ -103,12 +103,21 @@ int getModeValue(char* mode){
     if(strcmp(mode, "rgb") == 0){
         return 1;
     }
+    if(strcmp(mode, "reset") == 0){
+        return 2;
+    }
+    if(strcmp(mode, "demon") == 0){
+        return 3;
+    }
+    if(strcmp(mode, "fade") == 0){
+        return 4;
+    }
     else
         return -1;
 }
 
 void handleModeTransition(int modeNum, char* value, char* params){
-    rainbowMode = 0;
+    effectMode = -1;
     switch (modeNum){
         case 0:
             if(validateRainbowValue(value)){
@@ -116,7 +125,7 @@ void handleModeTransition(int modeNum, char* value, char* params){
                     fadeOff();
                 }
                 else{
-                    rainbowMode = 1;
+                    effectMode = 1;
                     rainbowSpeed = atoi(value);
                 }
             }
@@ -133,7 +142,15 @@ void handleModeTransition(int modeNum, char* value, char* params){
             else
                 alertRED();
             break;
-
+        case 2:
+            esp_restart();
+            break;
+        case 3:
+            effectMode = 2;
+            break;
+        case 4:
+            effectMode=3;
+            break;
         case -1:
             alertRED();
             break;
@@ -144,9 +161,21 @@ void handleModeTransition(int modeNum, char* value, char* params){
     }
 }
 
-void isRainbow(){
-    if(rainbowMode == 1){
+void handleEffect(){
+    switch (effectMode)
+    {
+    case 0:
+        break;
+    case 1:
         rainbow_loop(rainbowSpeed);
+        break;
+    case 2:
+        HalloweenEyes(0xff, 0x00, 0x00,1, 4, true, random(5,50), random(50,150),random(1000, 5000));
+        break;
+    case 3:
+        FadeInOut(100,0,100);
+        break;
+    default:
+        break;
     }
 }
-

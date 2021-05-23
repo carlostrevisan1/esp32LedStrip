@@ -28,7 +28,7 @@ void keepOnline(){
 }
 
 //message format <mode>/<value>/<params> 
-// ex : "rgb/2,5,5/" , "rainbow/1/5"
+// ex : "rgb/2,5,5/" , "rainbow/1/5", reset/1/1, demon/1/1, fade/1/1
 void callback_mqtt(char* topic, byte* message, unsigned int length){
   char *msg, *mode,*value, *params;
   int modeNum = -1;

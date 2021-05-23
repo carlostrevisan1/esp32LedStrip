@@ -33,3 +33,4 @@
 
 # Config file
 include/config.h
+.vscode/
